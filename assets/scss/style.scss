@@ -1,1 +1,21 @@
 // Feauture styles
+.wellrix-smtp {
+	&__settings {
+		padding: 50px;
+		form {
+			width: 400px;
+			input {
+				width: 100%;
+				display: block;
+				margin-bottom: 15px;
+			}
+			button {
+				border-radius: 5px;
+				background: var(--blue);
+				border: none;
+				padding: 10px 20px;
+				color: var(--white);
+			}
+		}
+	}
+}

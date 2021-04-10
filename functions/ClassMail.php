@@ -20,13 +20,13 @@ class WellrixMail {
         $mail->isSMTP();
         $mail->SMTPAuth = true;
         $mail->SMTPDebug = 0;
-        $mail->Host = 'ssl://smtp.yandex.ru';
-        $mail->Port = 465;
-        $mail->Username = 'user_login';
-        $mail->Password = 'user_pass';
+        $mail->Host = get_option( 'wellrix_smt_host' );
+        $mail->Port = get_option( 'wellrix_smt_port' );
+        $mail->Username = get_option( 'wellrix_smt_username' );
+        $mail->Password = get_option( 'wellrix_smt_password' );
 
         // От кого
-        $mail->setFrom('user_login', $formtitle);    
+        $mail->setFrom(get_option( 'wellrix_smt_username' ), $formtitle);    
         
         // Проверяем есть ли адреса, куда отправлять письмо?
         if($adresses){
@@ -35,7 +35,7 @@ class WellrixMail {
             }
         } else {
             // Если нету адресов вообще, то отправляем администратору
-            $mail->addAddress('admin_mail');
+            $mail->addAddress(get_option( 'wellrix_smt_admin_email' ));
         }
         
         // Тема письма
